@@ -13,9 +13,11 @@ def index(request):
 	dt = request.GET['date']
 
 	dt = datetime.strptime( dt , '%Y-%m-%d').strftime('%d-%m-%Y')
-
+	print('dt', dt)
 	res = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode={pincode}&date={dt}'.format(pincode=pincode, dt=dt))
+	print('got the response')
 	res = json.loads(res.text)
+
 
 	print('got the response')
 
