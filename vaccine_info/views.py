@@ -6,7 +6,7 @@ from django.template import loader
 # Create your views here.
 def index(request):
 
-
+	print('yes')
 	template = loader.get_template('slots/landing_page.html')
 
 
