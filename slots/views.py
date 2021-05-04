@@ -17,8 +17,10 @@ def index(request):
 	res = requests.get('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode={pincode}&date={dt}'.format(pincode=pincode, dt=dt))
 	res = json.loads(res.text)
 
-	template = loader.get_template('slots/index.html')
+	print('got the response')
 
+	template = loader.get_template('slots/index.html')
+	print('got the tmpelate')
 	context = {
 		'centers': res['centers'],
 	}
