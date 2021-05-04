@@ -1,0 +1,40 @@
+<html>
+<head>
+	<style>
+	{% for center in centers %}
+		#s_{{center.center_id}}:not(:target) {
+	display: none;
+			}
+		#s_{{center.center_id}}:target {
+			display: block;
+		}
+
+
+	{% endfor %}
+	</style>
+</head>
+<body>
+
+	{% if centers %}
+	<h4>Slots available</h4>
+		 <ul>
+		 {% for center in centers %}
+
+		 	<li><a href="#s_{{center.center_id}}">{{center.name}}</a>
+		 		<ul id = "s_{{center.center_id}}" >
+		 			{% for session in center.sessions %}
+			 			{% for slot in session.slots %}
+			 				<li>{{slot}}</li>
+			 			{% endfor %}
+			 		{% endfor %}
+		 		</ul>
+		 	</li>
+
+		 	
+		 {% endfor %}
+		 </ul>
+	{% else %}
+	    <p>No Slots are available.</p>
+	{% endif %}
+</body>
+</html>
